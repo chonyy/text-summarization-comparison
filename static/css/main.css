@@ -1,0 +1,17 @@
+body {
+    background-color: #88bdbc;
+}
+
+textarea {
+    width: 30vw;
+    height: 15vw;
+    margin: 1vw;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
