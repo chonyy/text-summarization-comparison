@@ -4,8 +4,8 @@ import urllib.request
 import re
 import nltk
 
-
 def summarize_NLTK(article_text):
+    nltk.data.path.append('./nltk_data/')
     article_text = re.sub(r'\[[0-9]*\]', ' ', article_text)
     article_text = re.sub(r'\s+', ' ', article_text)
 
@@ -42,15 +42,6 @@ def summarize_NLTK(article_text):
 
     summary_sentences = heapq.nlargest(
         3, sentence_scores, key=sentence_scores.get)
+    summary = ' '.join(summary_sentences)
 
-    return summary_sentences
-
-
-if __name__ == '__main__':
-    with open('test.txt', 'r', encoding="utf-8") as f:
-        article_text = f.read()
-
-    summary_sentences = summarize_NLTK(article_text)
-
-    for sentence in summary_sentences:
-        print(sentence)
+    return summary
