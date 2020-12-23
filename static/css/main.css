@@ -1,17 +1,27 @@
 body {
     background-color: #88bdbc;
-}
-
-textarea {
-    width: 30vw;
-    height: 15vw;
-    margin: 1vw;
+    margin: 0;
 }
 
 .main {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
     flex-direction: column;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
+    flex-basis: 100%;
+    flex: 1;
+    padding: 10px;
+}
+
+textarea {
+    height: 400px;
+}
+
+button {
+    margin-top: 5px;
 }
