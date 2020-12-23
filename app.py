@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, escape, render_template, Markup
 
-from utils import summarize_nltk, summarize_BERT
+from src.utils import summarize_nltk, summarize_BERT
 
 app = Flask(__name__)
 
