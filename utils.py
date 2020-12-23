@@ -6,7 +6,7 @@ import nltk
 
 
 def summarize_nltk(article_text, language='english'):
-    max_word_count_for_sentence = 40
+    max_word_count_for_sentence = 100
     summary_sentence_count = 3
 
     nltk.data.path.append('./nltk_data/')
@@ -55,5 +55,5 @@ def summarize_BERT(article_text):
     print('Loading BERT model...')
     model = Summarizer()
     print('Summarizing...')
-    summary = model(article_text)
+    summary = model(article_text, num_sentences=3)
     return summary

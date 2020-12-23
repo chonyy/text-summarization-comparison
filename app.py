@@ -12,7 +12,7 @@ def index():
 
 @app.route('/summarizeNLTK', methods=['POST'])
 def summarizeNLTK():
-    input_text = escape(request.form['text'])
+    input_text = str(escape(request.form['text']))
 
     summarization = summarize_nltk(input_text, 'english')
     clean_summarization = Markup(summarization).unescape()
@@ -21,8 +21,8 @@ def summarizeNLTK():
 
 
 @app.route('/summarizeBERT', methods=['POST'])
-def summarizeNLTK():
-    input_text = escape(request.form['text'])
+def summarizeBERT():
+    input_text = request.form['text']
 
     summarization = summarize_BERT(input_text)
     clean_summarization = Markup(summarization).unescape()

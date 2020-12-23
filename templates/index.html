@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -12,9 +14,34 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7C7877;">
+        <a class="navbar-brand" href="./">
+            <div class="navBrand">Text Summarization</div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/chonyy/text-summarization">Source code</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/chonyy">Creator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                        href="https://github.com/chonyy/text-summarization/blob/master/README.md">Docs</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="main">
         <div class="container">
             <div class="column">
+                <p>Input text</p>
                 <textarea id="input-text">(CNN)President Donald Trump has turned to a fringe group of advisers peddling increasingly dubious tactics to overturn the results of the election, creating a dire situation that multiple senior officials and people close to the President say has led to new levels of uncertainty at how Trump will resist the coming end to his tenure.
     
                     "No one is sure where this is heading," one official said on Monday. "He's still the President for another month."
@@ -23,12 +50,16 @@
                     In the process, Trump has mostly shunned those working inside the government, leading to growing fears of how he may lash out in the four weeks he has remaining in the White House -- or at how he may resist leaving the building come Inauguration Day.
                     Through it all, Trump has mostly abandoned the day-to-day running of government. At a Cabinet meeting last week, he spent much of the time complaining about his suspicions of voter fraud, according to a person familiar with the matter, leaving some attendees puzzled at the point of the gathering.
                 </textarea>
+                <button id="summarize_btn">Summarize!</button>
             </div>
             <div class="column">
+                <p>Summary</p>
+                <div class="label">NLTK</div>
                 <textarea id="summarization"></textarea>
+                <div class="label">BERT</div>
+                <textarea id="summarization-bert"></textarea>
             </div>
         </div>
-        <button id="summarize_btn">Summarize!</button>
     </div>
 </body>
 
