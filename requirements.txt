@@ -2,3 +2,4 @@ beautifulsoup4
 nltk
 flask
 bert-extractive-summarizer
+gunicorn
