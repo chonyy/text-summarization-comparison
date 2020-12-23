@@ -36,8 +36,12 @@ def summarize_nltk(article_text, language='english'):
             if len(sentence.split()) < max_word_count_for_sentence:
                 sentence_scores[sentence] += word_frequencies[word]
 
-    summary_sentences = heapq.nlargest(
-        summary_sentence_count, sentence_scores, key=sentence_scores.get)
-    summary = ' '.join(summary_sentences)
+    summary_sentences = heapq.nlargest(summary_sentence_count, sentence_scores, key=sentence_scores.get)
+
+    indexed_summary_sentences = [(sentence_list.index(sentence), sentence) for sentence in summary_sentences]
+    aligned_summary_sentences = sorted(indexed_summary_sentences, key=lambda x: x[0], reverse=False)
+    final_summary_sentences = map(lambda x: x[1], aligned_summary_sentences)
+
+    summary = ' '.join(final_summary_sentences)
 
     return summary
