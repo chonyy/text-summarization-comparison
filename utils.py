@@ -1,11 +1,12 @@
+from collections import defaultdict
+from summarizer import Summarizer
 import heapq
 import re
-from collections import defaultdict
-
 import nltk
 
+
 def summarize_nltk(article_text, language='english'):
-    max_word_count_for_sentence = 30
+    max_word_count_for_sentence = 40
     summary_sentence_count = 3
 
     nltk.data.path.append('./nltk_data/')
@@ -36,12 +37,23 @@ def summarize_nltk(article_text, language='english'):
             if len(sentence.split()) < max_word_count_for_sentence:
                 sentence_scores[sentence] += word_frequencies[word]
 
-    summary_sentences = heapq.nlargest(summary_sentence_count, sentence_scores, key=sentence_scores.get)
+    summary_sentences = heapq.nlargest(
+        summary_sentence_count, sentence_scores, key=sentence_scores.get)
 
-    indexed_summary_sentences = [(sentence_list.index(sentence), sentence) for sentence in summary_sentences]
-    aligned_summary_sentences = sorted(indexed_summary_sentences, key=lambda x: x[0], reverse=False)
+    indexed_summary_sentences = [(sentence_list.index(
+        sentence), sentence) for sentence in summary_sentences]
+    aligned_summary_sentences = sorted(
+        indexed_summary_sentences, key=lambda x: x[0], reverse=False)
     final_summary_sentences = map(lambda x: x[1], aligned_summary_sentences)
 
     summary = ' '.join(final_summary_sentences)
 
+    return summary
+
+
+def summarize_BERT(article_text):
+    print('Loading BERT model...')
+    model = Summarizer()
+    print('Summarizing...')
+    summary = model(article_text)
     return summary

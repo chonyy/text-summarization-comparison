@@ -5,9 +5,14 @@ body {
 
 .main {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
+}
+
+.container {
+    margin-top: 5vw;
+    display: flex;
+    flex-direction: row;
 }
 
 .column {
