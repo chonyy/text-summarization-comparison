@@ -21,6 +21,7 @@ $(document).ready(function () {
             $('#summarization-bert').val(data.summarization);
         })
 
+<<<<<<< HEAD
         $.ajax({
             data: {
                 text: $('#input-text').val()
@@ -41,6 +42,8 @@ $(document).ready(function () {
             $('#summarization-bilstm').val(data.summarization);
         })
 
+=======
+>>>>>>> 9c466ff724c5d5c6160a85e7b0159b49439043d9
         console.log('hi');
     });
 });
