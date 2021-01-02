@@ -1,0 +1,7 @@
+env
+venv
+.idea
+.vscode
+__pycache__
+src/LSTM_BiLSTM/*.h5
+src/CNN/*.pkl

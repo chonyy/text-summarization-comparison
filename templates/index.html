@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <title>Text Summarization</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7C7877;">
+        <a class="navbar-brand" href="./">
+            <div class="navBrand">Text Summarization</div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/chonyy/text-summary">Source code</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/chonyy">Creator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/chonyy/text-summary/blob/master/README.md">Docs</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="container">
+            <div class="row-1">
+                <div class="block">
+                    <div class="label-length">
+                        <p>Input text</p>
+                        <div class="float-right">
+                            <p>Length: </p>
+                            <p id="input-length">0</p>
+                        </div>
+                    </div>
+                    <textarea id="input-text">(CNN)President Donald Trump has turned to a fringe group of advisers peddling increasingly dubious tactics to overturn the results of the election, creating a dire situation that multiple senior officials and people close to the President say has led to new levels of uncertainty at how Trump will resist the coming end to his tenure.
+        
+                        "No one is sure where this is heading," one official said on Monday. "He's still the President for another month."
+                        Conspiracist lawyer Sidney Powell, disgraced former national security adviser Michael Flynn, onetime chief strategist Steve Bannon, hawkish trade adviser Peter Navarro and the eccentric founder of the retail website Overstock have all recently found themselves in the Oval Office or on the telephone advising Trump on new last-ditch efforts to reverse his loss.
+                        That's in addition to Trump's personal attorney Rudy Giuliani, who has been feeding the President's conspiracy theories for weeks and who, along with Powell, was seen again at the White House on Monday.
+                        In the process, Trump has mostly shunned those working inside the government, leading to growing fears of how he may lash out in the four weeks he has remaining in the White House -- or at how he may resist leaving the building come Inauguration Day.
+                        Through it all, Trump has mostly abandoned the day-to-day running of government. At a Cabinet meeting last week, he spent much of the time complaining about his suspicions of voter fraud, according to a person familiar with the matter, leaving some attendees puzzled at the point of the gathering.
+                    </textarea>
+                </div>
+                <button id="summarize_btn">Summarize!</button>
+            </div>
+            <div class="row-2">
+                <p>Summary</p>
+                <div class="summaries">
+                    <div class="sum-1">
+                        <div class="block">
+                            <div class="label-length">
+                                <div class="label bold">NLTK</div>
+                                <div class="float-right">
+                                    <p class="label">Time: </p>
+                                    <p class="label" id="nltk-time">0</p>
+                                    <p class="label margin-right">s</p>
+                                    <p class="label">Length: </p>
+                                    <p class="label" id="NLTK-length">0</p>
+                                </div>
+                            </div>
+                            <textarea id="summary"></textarea>
+                        </div>
+                        <div class="block">
+                            <div class="label-length">
+                                <div class="label bold">BERT</div>
+                                <div class="float-right">
+                                    <p class="label">Time: </p>
+                                    <p class="label" id="bert-time">0</p>
+                                    <p class="label margin-right">s</p>
+                                    <p class="label">Length: </p>
+                                    <p class="label" id="BERT-length">0</p>
+                                </div>
+                            </div>
+                            <textarea id="summary-bert"></textarea>
+                        </div>
+                        <div class="block">
+                            <div class="label-length">
+                                <div class="label bold">T5</div>
+                                <div class="float-right">
+                                    <p class="label">Time: </p>
+                                    <p class="label" id="t5-time">0</p>
+                                    <p class="label margin-right">s</p>
+                                    <p class="label">Length: </p>
+                                    <p class="label" id="T5-length">0</p>
+                                </div>
+                            </div>
+                            <textarea id="summary-t5"></textarea>
+                        </div>
+                    </div>
+                    <div class="sum-2">
+                        <div class="block">
+                            <div class="label-length">
+                                <div class="label bold">LSTM</div>
+                                <div class="float-right">
+                                    <p class="label">Time: </p>
+                                    <p class="label" id="lstm-time">0</p>
+                                    <p class="label margin-right">s</p>
+                                    <p class="label">Length: </p>
+                                    <p class="label" id="LSTM-length">0</p>
+                                </div>
+                            </div>
+                            <textarea id="summary-lstm"></textarea>
+                        </div>
+                        <div class="block">
+                            <div class="label-length">
+                                <div class="label bold">BiLSTM</div>
+                                <div class="float-right">
+                                    <p class="label">Time: </p>
+                                    <p class="label" id="bilstm-time">0</p>
+                                    <p class="label margin-right">s</p>
+                                    <p class="label">Length: </p>
+                                    <p class="label" id="BiLSTM-length">0</p>
+                                </div>
+                            </div>
+                            <textarea id="summary-bilstm"></textarea>
+                        </div>
+                        <div class="block">
+                            <div class="label-length">
+                                <div class="label bold">CNN</div>
+                                <div class="float-right">
+                                    <p class="label">Time: </p>
+                                    <p class="label" id="cnn-time">0</p>
+                                    <p class="label margin-right">s</p>
+                                    <p class="label">Length: </p>
+                                    <p class="label" id="CNN-length">0</p>
+                                </div>
+                            </div>
+                            <textarea id="summary-cnn"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
