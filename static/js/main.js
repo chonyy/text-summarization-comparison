@@ -32,21 +32,34 @@ $(document).ready(function () {
             type: 'POST',
             url: '/summarizeBERT'
         }).done(function (data) {
+<<<<<<< HEAD
             $('#summary-bert').val(data.summary);
             $('#BERT-length').text(data.summary.length);
             $('#bert-time').text(data.time);
         })
 
+=======
+            $('#summarization-bert').val(data.summarization);
+        })
+
+<<<<<<< HEAD
+>>>>>>> 8021aad4cd0b850ca61eb43e2c8ffcdedaa5a3d3
         $.ajax({
             data: {
                 text: $('#input-text').val()
             },
             type: 'POST',
+<<<<<<< HEAD
             url: '/summarizeT5'
         }).done(function (data) {
             $('#summary-t5').val(data.summary);
             $('#T5-length').text(data.summary.length);
             $('#t5-time').text(data.time);
+=======
+            url: '/summarizeLSTM'
+        }).done(function (data) {
+            $('#summarization-lstm').val(data.summarization);
+>>>>>>> 8021aad4cd0b850ca61eb43e2c8ffcdedaa5a3d3
         })
 
         $.ajax({
@@ -54,6 +67,7 @@ $(document).ready(function () {
                 text: $('#input-text').val()
             },
             type: 'POST',
+<<<<<<< HEAD
             url: '/summarizeCNN'
         }).done(function (data) {
             $('#summary-cnn').val(data.summary);
@@ -61,6 +75,15 @@ $(document).ready(function () {
             $('#cnn-time').text(data.time);
         })
 
+=======
+            url: '/summarizeBiLSTM'
+        }).done(function (data) {
+            $('#summarization-bilstm').val(data.summarization);
+        })
+
+=======
+>>>>>>> 9c466ff724c5d5c6160a85e7b0159b49439043d9
+>>>>>>> 8021aad4cd0b850ca61eb43e2c8ffcdedaa5a3d3
         console.log('hi');
     });
 });
