@@ -62,9 +62,6 @@ def summarize_BERT(article_text):
     return summary
 
 
-<< << << < HEAD
-
-
 def summarize_T5(text):
     device = torch.device('cpu')
     model = T5ForConditionalGeneration.from_pretrained('t5-small')
@@ -85,7 +82,3 @@ def summarize_T5(text):
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
 
     return summary
-
-
-== == == =
->>>>>> > 8021aad4cd0b850ca61eb43e2c8ffcdedaa5a3d3
